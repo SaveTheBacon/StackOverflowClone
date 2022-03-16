@@ -4,6 +4,7 @@ package com.example.assignments.service;
 import com.example.assignments.model.Answer;
 import com.example.assignments.model.Post;
 import com.example.assignments.repository.IPostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Optional;
 @Service
 public class PostService {
 
+    @Autowired
     IPostRepository iPostRepository;
 
     public List<Post> getAllPosts(){

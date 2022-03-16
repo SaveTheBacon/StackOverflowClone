@@ -34,13 +34,13 @@ public class PostController {
         return postService.deletePost(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/savePost")
+    @RequestMapping(method = RequestMethod.POST, value = "/savePost")
     @ResponseBody
     public Post savePost(@RequestBody Post post) {
         return postService.savePost(post);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/updatePost")
+    @RequestMapping(method = RequestMethod.PUT, value = "/updatePost")
     @ResponseBody
     public Post updatePost(@RequestParam(name = "id") Integer id, @RequestBody Post post) {
         return postService.updatePost(id, post);

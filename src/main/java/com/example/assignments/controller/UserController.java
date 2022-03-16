@@ -16,7 +16,7 @@ public class UserController     {
     @Autowired
     UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getAll")
+    @RequestMapping(method = RequestMethod.GET, value = "/getAllUsers")
     @ResponseBody
     public List<User> getUsers(){
         return userService.getAllUsers();
@@ -34,13 +34,13 @@ public class UserController     {
         return userService.deleteUser(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/saveUser")
+    @RequestMapping(method = RequestMethod.POST, value = "/saveUser")
     @ResponseBody
     public User saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/updateUser")
+    @RequestMapping(method = RequestMethod.PUT, value = "/updateUser")
     @ResponseBody
     public User updateUser(@RequestParam(name = "id") Integer id, @RequestBody User user) {
         return userService.updateUser(id, user);

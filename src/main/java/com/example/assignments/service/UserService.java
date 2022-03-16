@@ -4,6 +4,7 @@ package com.example.assignments.service;
 
 import com.example.assignments.model.User;
 import com.example.assignments.repository.IUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    @Autowired
     IUserRepository iUserRepository;
 
     public List<User> getAllUsers(){

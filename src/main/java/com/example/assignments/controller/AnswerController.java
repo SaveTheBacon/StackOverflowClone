@@ -34,13 +34,13 @@ public class AnswerController {
         return answerService.deleteAnswer(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/saveAnswer")
+    @RequestMapping(method = RequestMethod.POST, value = "/saveAnswer")
     @ResponseBody
     public Answer saveAnswer(@RequestBody Answer answer) {
         return answerService.saveAnswer(answer);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/updateAnswer")
+    @RequestMapping(method = RequestMethod.PUT  , value = "/updateAnswer")
     @ResponseBody
     public Answer updateAnswer(@RequestParam(name = "id") Integer id, @RequestBody Answer answer) {
         return answerService.updateAnswer(id, answer);

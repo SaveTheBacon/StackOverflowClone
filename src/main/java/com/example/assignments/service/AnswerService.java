@@ -14,6 +14,10 @@ public class AnswerService {
     @Autowired
     IAnswerRepository iAnswerRepository;
 
+    public AnswerService(){
+
+    }
+
     public List<Answer> getAllAnswers(){
         return (List<Answer>) iAnswerRepository.findAll();
     }
