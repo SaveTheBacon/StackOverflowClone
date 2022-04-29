@@ -1,9 +1,13 @@
 <div style = "height: 50px;">
-  Header
+  <p-tabMenu [model] = "items"></p-tabMenu>
 </div>
 
-<div style = "height: calc(100vh - 50px); background: red">
-  Main Body
-</div>
+<h5>Left Icon</h5>
+<span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText placeholder="Search" />
+    <button pButton type="button" label="Primary"></button>
+    <button pButton type="button" label="Secondary" class="p-button-secondary"></button>
+</span>
 
-<navbar></navbar>
+
