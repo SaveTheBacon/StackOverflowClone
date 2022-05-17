@@ -5,6 +5,12 @@
   <title>Title</title>
 </head>
 <body>
+  <div *ngFor="let tag of tags" >
+    <div>
+      <p>{{tag?.name}}</p>
+    </div>
+    <hr>
+  </div>
 
 </body>
 </html>

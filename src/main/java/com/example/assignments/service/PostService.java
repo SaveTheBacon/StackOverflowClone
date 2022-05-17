@@ -17,7 +17,8 @@ public class PostService {
     IPostRepository iPostRepository;
 
     public List<Post> getAllPosts(){
-        return (List<Post>) iPostRepository.findAll();
+        List<Post> aux = (List<Post>) iPostRepository.findAll();
+        return aux;
     }
 
     public Post getPost(Integer ID){

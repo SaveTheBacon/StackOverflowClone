@@ -28,7 +28,10 @@ public class User {
 
     public User(String email, String password) {
         this.email = email;
+        this.banned = false;
         this.password = password;
+        this.moderator = false;
+        this.score = 0;
     }
 
     public String getEmail() {

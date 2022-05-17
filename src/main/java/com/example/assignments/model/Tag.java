@@ -12,8 +12,6 @@ public class Tag {
     Integer tagID;
     @Column(name = "content")
     String name;
-    @Column(name = "number_of_appearances")
-    Integer nrOfAppearances;
 
     public Tag() {
     }
@@ -34,16 +32,7 @@ public class Tag {
         this.name = name;
     }
 
-    public Integer getNrOfAppearances() {
-        return nrOfAppearances;
-    }
-
-    public void setNrOfAppearances(Integer nrOfAppearances) {
-        this.nrOfAppearances = nrOfAppearances;
-    }
-
-    public Tag(Integer tagID, String name) {
-        this.tagID = tagID;
+    public Tag(String name) {
         this.name = name;
     }
 }

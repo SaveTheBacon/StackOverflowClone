@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:4200")
 @Controller
 @RequestMapping(value = "/answers")
 public class AnswerController {

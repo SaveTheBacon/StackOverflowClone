@@ -6,6 +6,7 @@ import {RegisterComponent} from "./content/pages/register/register.component";
 import {CreatePostComponent} from "./content/pages/createPost/createPost.component";
 import {SeePostComponent} from "./content/pages/seePost/allPosts/seePost.component";
 import {SeeTagComponent} from "./content/pages/seeTag/seeTag.component";
+import {SeeUsersComponent} from "./content/pages/seeUsers/seeUsers.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'createPost', component: CreatePostComponent},
   {path: 'seePost', component: SeePostComponent},
-  {path: 'seeTag', component: SeeTagComponent}
+  {path: 'seeTag', component: SeeTagComponent},
+  {path: 'seeUser', component: SeeUsersComponent}
 
 ];
 

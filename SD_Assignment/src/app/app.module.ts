@@ -17,6 +17,10 @@ import {NavbarComponent} from "./content/pages/navbar/navbar.component";
 import {SeePostService} from "./services/seePost.service";
 import {IndividualPostComponent} from "./content/pages/seePost/individualPost/individualPost.component";
 import {CommonModule} from "@angular/common";
+import {SeeTagService} from "./services/seeTag.service";
+import {RegisterService} from "./services/register.service";
+import {SeeUsersService} from "./services/seeUsers.service";
+import {SeeUsersComponent} from "./content/pages/seeUsers/seeUsers.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +32,8 @@ import {CommonModule} from "@angular/common";
     SeePostComponent,
     SeeTagComponent,
     NavbarComponent,
-    IndividualPostComponent
+    IndividualPostComponent,
+    SeeUsersComponent
 
   ],
   imports: [
@@ -42,7 +47,10 @@ import {CommonModule} from "@angular/common";
 
   ],
   providers: [
-    SeePostService
+    SeePostService,
+    SeeTagService,
+    RegisterService,
+    SeeUsersService
 
   ],
   bootstrap: [AppComponent]

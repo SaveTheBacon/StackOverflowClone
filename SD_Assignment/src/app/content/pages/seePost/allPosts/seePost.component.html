@@ -5,9 +5,13 @@
   <title>All Questions</title>
 </head>
 <body>
+  <h1> Search (tick box for tag search): </h1> <input type = "text" #filterParam>
+  <input type = "button" value = "search text" (click) = "filterQuestions()">
+  <input type = "button" value = "search tag" (click) = "filterTag()">
+  <br>
   <h1> Questions: </h1>
 
-  <div *ngFor="let post of posts" >
+  <div *ngFor="let post of showedPosts" >
     <app-individual-post [post] = post></app-individual-post>
   </div>
 

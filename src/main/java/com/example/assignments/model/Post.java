@@ -2,7 +2,9 @@ package com.example.assignments.model;
 
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
@@ -17,7 +19,7 @@ public class Post {
     @Column(name = "score")
     private Integer score;
     @Column(name = "creation_date")
-    private GregorianCalendar creationDate;
+    private Date creationDate;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "User_ID")
     private User poster;
@@ -27,6 +29,13 @@ public class Post {
 
     public Post(){
 
+    }
+
+    public Post(String content, User poster, String title) {
+        this.content = content;
+        this.poster = poster;
+        this.title = title;
+        this.creationDate = new java.sql.Date(System.currentTimeMillis());
     }
 
     public String getTitle() {

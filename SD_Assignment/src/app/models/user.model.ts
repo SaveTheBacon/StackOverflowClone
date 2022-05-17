@@ -1,4 +1,8 @@
 
 export interface IUser{
-  name: string
+  email: string,
+  password: string,
+  score: number,
+  banned: boolean,
+  moderator: boolean
 }

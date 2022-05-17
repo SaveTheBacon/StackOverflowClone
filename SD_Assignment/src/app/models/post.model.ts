@@ -1,4 +1,5 @@
 import {IUser} from "./user.model";
+import {ITag} from "./tag.model";
 
 
 export interface IPost{
@@ -8,5 +9,6 @@ export interface IPost{
   score: number
   creation_date: Date
   author: IUser
+  tags: ITag[]
 
 }

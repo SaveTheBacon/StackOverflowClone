@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:4200")
 @Controller
 @RequestMapping(value = "/upvotes")
 public class UpvoteController {
