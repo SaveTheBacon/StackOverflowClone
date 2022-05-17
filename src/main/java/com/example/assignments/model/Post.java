@@ -21,10 +21,20 @@ public class Post {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "User_ID")
     private User poster;
+    @Column(name = "title")
+    private String title;
 
 
     public Post(){
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Post(String content) {

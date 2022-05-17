@@ -12,8 +12,9 @@ public class PostDTO {
     private Integer userID;
     private Integer upvotes;
     private Integer downvotes;
+    private String title;
 
-    public PostDTO(Integer postID, String content, Integer score, GregorianCalendar creationDate, Integer userID, Integer upvotes, Integer downvotes) {
+    public PostDTO(Integer postID, String content, Integer score, GregorianCalendar creationDate, Integer userID, Integer upvotes, Integer downvotes, String title) {
         this.postID = postID;
         this.content = content;
         this.score = score;
@@ -21,6 +22,7 @@ public class PostDTO {
         this.userID = userID;
         this.upvotes = upvotes;
         this.downvotes = downvotes;
+        this.title = title;
     }
 
     public PostDTO() {
@@ -76,6 +78,14 @@ public class PostDTO {
 
     public Integer getDownvotes() {
         return downvotes;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setDownvotes(Integer downvotes) {

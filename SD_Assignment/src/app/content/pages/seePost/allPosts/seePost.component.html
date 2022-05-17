@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Questions</title>
+</head>
+<body>
+  <h1> Questions: </h1>
+
+  <div *ngFor="let post of posts" >
+    <app-individual-post [post] = post></app-individual-post>
+  </div>
+
+</body>
+</html>
