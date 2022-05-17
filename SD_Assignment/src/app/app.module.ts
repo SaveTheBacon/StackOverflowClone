@@ -21,6 +21,7 @@ import {SeeTagService} from "./services/seeTag.service";
 import {RegisterService} from "./services/register.service";
 import {SeeUsersService} from "./services/seeUsers.service";
 import {SeeUsersComponent} from "./content/pages/seeUsers/seeUsers.component";
+import {LoginService} from "./services/login.service";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {SeeUsersComponent} from "./content/pages/seeUsers/seeUsers.component";
     SeePostService,
     SeeTagService,
     RegisterService,
-    SeeUsersService
+    SeeUsersService,
+    LoginService
 
   ],
   bootstrap: [AppComponent]
