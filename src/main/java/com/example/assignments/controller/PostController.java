@@ -21,7 +21,9 @@ public class PostController {
     @RequestMapping(method = RequestMethod.GET, value = "/getAll")
     @ResponseBody
     public List<Post> getPosts(){
-        return postService.getAllPosts();
+        var a = postService.getAllPosts();
+        System.out.println(a.get(0));
+        return a;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getPost")

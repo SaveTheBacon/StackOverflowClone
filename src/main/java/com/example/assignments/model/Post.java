@@ -1,19 +1,19 @@
 package com.example.assignments.model;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
+
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 
 @Entity
+@Table(name="post")
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer postID;
+    private Integer postid;
     @Column(name = "content")
     private String content;
     @Column(name = "score")
@@ -31,12 +31,12 @@ public class Post {
 
     }
 
-    public Post(String content, User poster, String title) {
-        this.content = content;
-        this.poster = poster;
-        this.title = title;
-        this.creationDate = new java.sql.Date(System.currentTimeMillis());
-    }
+//    public Post(String content, User poster, String title) {
+//        this.content = content;
+//        this.poster = poster;
+//        this.title = title;
+//        this.creationDate = new java.sql.Date(System.currentTimeMillis());
+//    }
 
     public String getTitle() {
         return title;
@@ -64,5 +64,29 @@ public class Post {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public Integer getPostid() {
+        return postid;
+    }
+
+    public void setPostid(Integer postid) {
+        this.postid = postid;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public User getPoster() {
+        return poster;
+    }
+
+    public void setPoster(User poster) {
+        this.poster = poster;
     }
 }
