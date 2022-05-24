@@ -78,8 +78,43 @@ public class PostController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getPost")
     @ResponseBody
-    public Post getPost(@RequestParam(name = "id") Integer id){
-        return postService.getPost(id);
+    public PostDTO getPost(@RequestParam(name = "id") Integer id){
+
+        Post post = postService.getPost(id);
+
+        List<Answer> allAnswers = answerController.getAnswers();
+        List<TagLinker> tagLinkers = tagLinkerController.getTagLinkers();
+        List<Upvote> allUpvotes = upvoteController.getUpvotes();
+        List<Downvote> allDownvotes = downvoteController.getDownvotes();
+
+        List<Answer> auxAnswers = new ArrayList<>();
+        for(Answer answer: allAnswers){
+            if (answer.getPost().getPostid().equals(post.getPostid())){
+                auxAnswers.add(answer);
+            }
+        }
+
+        List<Tag> auxTags = new ArrayList<>();
+        for(TagLinker tagLinker: tagLinkers){
+            if(tagLinker.getPost().getPostid().equals(post.getPostid())){
+                auxTags.add(tagLinker.getTag());
+            }
+        }
+        List<Upvote> auxUpvotes = new ArrayList<>();
+        for(Upvote upvote: allUpvotes){
+            if(upvote.getPost().getPostid().equals(post.getPostid())){
+                auxUpvotes.add(upvote);
+            }
+        }
+        List<Downvote> auxDownvotes = new ArrayList<>();
+        for(Downvote downvote: allDownvotes){
+            if(downvote.getPost().getPostid().equals(post.getPostid())){
+                auxDownvotes.add(downvote);
+            }
+        }
+
+        PostDTO postDTO = new PostDTO(post, auxUpvotes, auxDownvotes, auxTags, auxAnswers);
+        return postDTO ;
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/deletePost")

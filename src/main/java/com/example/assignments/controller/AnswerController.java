@@ -1,6 +1,7 @@
 package com.example.assignments.controller;
 
 
+import com.example.assignments.dto.AnswerDTO;
 import com.example.assignments.model.Answer;
 import com.example.assignments.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,11 @@ public class AnswerController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/saveAnswer")
     @ResponseBody
-    public Answer saveAnswer(@RequestBody Answer answer) {
-        return answerService.saveAnswer(answer);
+    public Answer saveAnswer(@RequestBody AnswerDTO answerDTO) {
+        Answer auxAnswer = new Answer(answerDTO);
+
+
+        return answerService.saveAnswer(auxAnswer);
     }
 
     @RequestMapping(method = RequestMethod.PUT  , value = "/updateAnswer")

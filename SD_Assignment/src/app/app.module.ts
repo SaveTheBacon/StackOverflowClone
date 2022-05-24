@@ -25,6 +25,8 @@ import {LoginService} from "./services/login.service";
 import {FormsModule} from "@angular/forms";
 import {LogoutComponent} from "./content/pages/logout/logout.component";
 import {CreatePostService} from "./services/createPost.service";
+import {DetailedPostComponent} from "./content/pages/seePost/detailedPost/detailedPost.component";
+import {CreateAnswerService} from "./services/createAnswer.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import {CreatePostService} from "./services/createPost.service";
     NavbarComponent,
     IndividualPostComponent,
     SeeUsersComponent,
-    LogoutComponent
+    LogoutComponent,
+    DetailedPostComponent
 
   ],
     imports: [
@@ -58,7 +61,8 @@ import {CreatePostService} from "./services/createPost.service";
     RegisterService,
     SeeUsersService,
     LoginService,
-    CreatePostService
+    CreatePostService,
+    CreateAnswerService
 
   ],
   bootstrap: [AppComponent]

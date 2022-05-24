@@ -1,0 +1,38 @@
+<div >
+  <div>
+    <div>
+      <p>Title: {{post?.title}}</p>
+      <p>Score: {{post?.score}}</p> <input type = "button" value = "upvote"><input type = "button" value = "downvote">
+      <p>Creation date: {{post?.creationDate}}</p>
+      <p>Author: {{post?.poster?.email}}</p>
+      <br>
+    </div>
+    Content:
+    <p>{{post?.content}}</p>
+
+    <div>
+      Tags:
+      <div *ngFor="let tag of post?.tags">
+        <p>{{tag?.name}}</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div>
+      <h3 >Reply: </h3><input type = "text"#answerContent>
+      <input type = "button" value = "Submit an answer" (click) = "createAnswer()">
+      <br>
+      Answers:
+      <div *ngFor="let answer of post?.answers">
+        <p>Answer: {{answer?.content}}</p>
+        <p>Score: {{answer?.score}}</p>
+        <input type = "button" value = "upvote"><input type = "button" value = "downvote">
+        <p>Author: {{answer?.user?.email}}</p>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

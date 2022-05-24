@@ -45,7 +45,7 @@ export class CreatePostComponent {
         score: 0,
         answers: [],
         content: this.content.nativeElement.value,
-        author: author,
+        poster: author,
         upvotes: [],
         downvotes: []
       }

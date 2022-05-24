@@ -1,21 +1,22 @@
 <div >
-  <div>
-    <div>
+  <div >
+    <div [routerLink] = "['/posts', post?.postid]">
       <p>Title: {{post?.title}}</p>
       <p>Score: {{post?.score}}</p> <input type = "button" value = "upvote"><input type = "button" value = "downvote">
       <p>Creation date: {{post?.creationDate}}</p>
-      <p>Author: {{post?.author?.email}}</p>
+      <p>Author: {{post?.poster?.email}}</p>
       <br>
     </div>
     Content:
     <p>{{post?.content}}</p>
-    <!--
-    <div >
+
+    <div>
+      Tags:
       <div *ngFor="let tag of post?.tags">
-        <app-tag-item [tag]=tag></app-tag-item>
+        <p>{{tag?.name}}</p>
       </div>
     </div>
-    -->
+
     <hr>
 
 

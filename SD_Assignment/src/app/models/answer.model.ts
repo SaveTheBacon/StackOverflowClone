@@ -1,14 +1,18 @@
 import {IUser} from "./user.model";
 import {IPost} from "./post.model";
+import {IUpvote} from "./upvote.model";
+import {IDownvote} from "./downvote.model";
 
 
 export interface IAnswer{
-  answerid: number
-  title: string
-  cotent: string
+  answerID?: number
   score: number
+  content: string
+  user: IUser
   date: Date
-  Post: IPost
-  poster: IUser
+  post: IPost
+
+  upvotes: IUpvote
+  downvote: IDownvote
 
 }

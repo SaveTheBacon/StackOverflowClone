@@ -7,12 +7,20 @@ import {CommonModule} from "@angular/common";
 export class SeePostService{
 
   getAllUrl = 'http://localhost:8081/posts/getAll'
+  getByIdUrl = 'http://localhost:8081/posts/getPost'
 
   constructor(private http: HttpClient) {
   }
 
   getPosts(){
     return this.http.get<IPost[]>(this.getAllUrl)
+  }
+
+  getPostById(id: number){
+    let auxUrl : string = this.getByIdUrl
+    auxUrl += "?id="
+    auxUrl += id
+    return this.http.get<IPost>(auxUrl)
   }
 
 }

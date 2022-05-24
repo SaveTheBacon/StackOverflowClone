@@ -11,7 +11,7 @@ export interface IPost{
   content: string
   score: number
   creationDate: Date
-  author: IUser
+  poster: IUser
   tags: ITag[]
   upvotes: IUpvote[]
   downvotes: IDownvote[]

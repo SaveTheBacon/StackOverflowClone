@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {IPost} from "../../../../models/post.model";
+import {ITag} from "../../../../models/tag.model";
 
 
 @Component({
@@ -9,4 +10,5 @@ import {IPost} from "../../../../models/post.model";
 
 export class IndividualPostComponent{
   @Input() post?: IPost
+  tag?: ITag
 }

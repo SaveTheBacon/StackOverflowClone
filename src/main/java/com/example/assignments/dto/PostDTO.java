@@ -40,6 +40,19 @@ public class PostDTO {
         this.tags = tags;
         this.answers = answers;
     }
+    public PostDTO(Post post, List<Upvote> upvotes, List<Downvote> downvotes, List<Tag> tags, List<Answer> answers){
+        this.postID = post.getPostid();
+        this.content = post.getContent();
+        this.score = post.getScore();
+        this.creationDate = post.getCreationDate();
+        this.title = post.getTitle();
+        this.author = post.getPoster();
+        this.upvotes = upvotes;
+        this.downvotes = downvotes;
+        this.tags = tags;
+        this.answers = answers;
+
+    }
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;

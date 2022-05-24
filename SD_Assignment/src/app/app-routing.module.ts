@@ -8,6 +8,7 @@ import {SeePostComponent} from "./content/pages/seePost/allPosts/seePost.compone
 import {SeeTagComponent} from "./content/pages/seeTag/seeTag.component";
 import {SeeUsersComponent} from "./content/pages/seeUsers/seeUsers.component";
 import {LogoutComponent} from "./content/pages/logout/logout.component";
+import {DetailedPostComponent} from "./content/pages/seePost/detailedPost/detailedPost.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'createPost', component: CreatePostComponent},
   {path: 'seePost', component: SeePostComponent},
   {path: 'seeTag', component: SeeTagComponent},
-  {path: 'seeUser', component: SeeUsersComponent}
+  {path: 'seeUser', component: SeeUsersComponent},
+  {path: 'seePost/:id', component: DetailedPostComponent}
 
 ];
 

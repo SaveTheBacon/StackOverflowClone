@@ -1,6 +1,8 @@
 package com.example.assignments.model;
 
 
+import com.example.assignments.dto.AnswerDTO;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -81,5 +83,14 @@ public class Answer {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Answer(AnswerDTO answerDTO){
+        this.score = answerDTO.getScore();
+        this.content = answerDTO.getContent();
+        this.date = answerDTO.getDate();
+        this.post = answerDTO.getPost();
+        this.poster = answerDTO.getUser();
+
     }
 }
