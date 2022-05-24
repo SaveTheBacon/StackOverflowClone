@@ -43,7 +43,7 @@ public class TagLinkerController {
 
     @RequestMapping(method = RequestMethod.PUT  , value = "/updateTagLinker")
     @ResponseBody
-    public TagLinker updateTagLinker(@RequestParam(name = "id") Integer id, @RequestBody TagLinker tagLinker) {
-        return tagLinkerService.updateTagLinker(id, tagLinker);
+    public TagLinker updateTagLinker(@RequestBody TagLinker tagLinker) {
+        return tagLinkerService.updateTagLinker(tagLinker);
     }
 }

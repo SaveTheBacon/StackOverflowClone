@@ -43,7 +43,7 @@ public class UpvoteController {
 
     @RequestMapping(method = RequestMethod.PUT  , value = "/updateUpvote")
     @ResponseBody
-    public Upvote updateUpvote(@RequestParam(name = "id") Integer id, @RequestBody Upvote upvote) {
-        return upvoteService.updateUpvote(id, upvote);
+    public Upvote updateUpvote(@RequestBody Upvote upvote) {
+        return upvoteService.updateUpvote(upvote);
     }
 }

@@ -43,7 +43,7 @@ public class TagController {
 
     @RequestMapping(method = RequestMethod.PUT  , value = "/updateTag")
     @ResponseBody
-    public Tag updateTag(@RequestParam(name = "id") Integer id, @RequestBody Tag tag) {
-        return tagService.updateTag(id, tag);
+    public Tag updateTag(@RequestBody Tag tag) {
+        return tagService.updateTag(tag);
     }
 }

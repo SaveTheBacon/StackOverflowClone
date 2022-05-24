@@ -45,8 +45,7 @@ public class TagService {
         return iTagRepository.save(tag);
     }
 
-    public Tag updateTag(Integer id, Tag tag){
-        Tag initialTag = this.getTag(id);
-        return iTagRepository.save(initialTag);
+    public Tag updateTag(Tag tag){
+        return iTagRepository.save(tag);
     }
 }

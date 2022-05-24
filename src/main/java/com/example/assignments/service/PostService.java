@@ -50,8 +50,7 @@ public class PostService {
         return iPostRepository.save(post);
     }
 
-    public Post updatePost(Integer id, Post post){
-        Post initialPost = this.getPost(id);
-        return iPostRepository.save(initialPost);
+    public Post updatePost(Post post){
+        return iPostRepository.save(post);
     }
 }

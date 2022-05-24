@@ -38,8 +38,7 @@ public class DownvoteService {
         return iDownvoteRepository.save(downvote);
     }
 
-    public Downvote updateDownvote(Integer id, Downvote downvote){
-        Downvote initialDownvote = this.getDownvote(id);
-        return iDownvoteRepository.save(initialDownvote);
+    public Downvote updateDownvote(Downvote downvote){
+        return iDownvoteRepository.save(downvote);
     }
 }

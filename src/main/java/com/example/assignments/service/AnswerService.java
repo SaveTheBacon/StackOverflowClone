@@ -38,9 +38,8 @@ public class AnswerService {
         return iAnswerRepository.save(answer);
     }
 
-    public Answer updateAnswer(Integer id, Answer answer){
-        Answer initialAnswer = this.getAnswer(id);
-        return iAnswerRepository.save(initialAnswer);
+    public Answer updateAnswer(Answer answer){
+        return iAnswerRepository.save(answer);
     }
 
 

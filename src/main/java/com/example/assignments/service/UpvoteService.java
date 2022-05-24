@@ -38,8 +38,7 @@ public class UpvoteService {
         return iUpvoteRepository.save(upvote);
     }
 
-    public Upvote updateUpvote(Integer id, Upvote upvote){
-        Upvote initialUpvote = this.getUpvote(id);
-        return iUpvoteRepository.save(initialUpvote);
+    public Upvote updateUpvote(Upvote upvote){
+        return iUpvoteRepository.save(upvote);
     }
 }

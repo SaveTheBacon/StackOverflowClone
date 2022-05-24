@@ -43,7 +43,7 @@ public class DownvoteController {
 
     @RequestMapping(method = RequestMethod.PUT  , value = "/updateDownvote")
     @ResponseBody
-    public Downvote updateDownvote(@RequestParam(name = "id") Integer id, @RequestBody Downvote downvote) {
-        return downvoteService.updateDownvote(id, downvote);
+    public Downvote updateDownvote(@RequestBody Downvote downvote) {
+        return downvoteService.updateDownvote(downvote);
     }
 }

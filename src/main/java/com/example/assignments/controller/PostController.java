@@ -148,8 +148,8 @@ public class PostController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updatePost")
     @ResponseBody
-    public Post updatePost(@RequestParam(name = "id") Integer id, @RequestBody Post post) {
-        return postService.updatePost(id, post);
+    public Post updatePost(@RequestBody Post post) {
+        return postService.updatePost(post);
     }
 
 

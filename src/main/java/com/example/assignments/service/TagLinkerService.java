@@ -38,9 +38,8 @@ public class TagLinkerService {
         return iTagLinkerRepository.save(tagLinker);
     }
 
-    public TagLinker updateTagLinker(Integer id, TagLinker tagLinker){
-        TagLinker initialTagLinker = this.getTagLinker(id);
-        return iTagLinkerRepository.save(initialTagLinker);
+    public TagLinker updateTagLinker(TagLinker tagLinker){
+        return iTagLinkerRepository.save(tagLinker);
     }
     
     

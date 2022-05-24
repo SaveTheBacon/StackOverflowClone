@@ -48,7 +48,7 @@ public class AnswerController {
 
     @RequestMapping(method = RequestMethod.PUT  , value = "/updateAnswer")
     @ResponseBody
-    public Answer updateAnswer(@RequestParam(name = "id") Integer id, @RequestBody Answer answer) {
-        return answerService.updateAnswer(id, answer);
+    public Answer updateAnswer(@RequestBody Answer answer) {
+        return answerService.updateAnswer(answer);
     }
 }
