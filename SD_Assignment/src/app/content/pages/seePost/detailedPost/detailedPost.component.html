@@ -29,7 +29,8 @@
       <div *ngFor="let answer of post?.answers">
         <p>Answer: {{answer?.content}}</p>
         <p>Score: {{answer?.score}}</p>
-        <input type = "button" value = "upvote"><input type = "button" value = "downvote">
+        <button [hidden] = "hideVoteButton()" value = "upvote" (click) = "upvoteAnswer(answer)"></button>
+        <button [hidden]= "hideVoteButton()" value = "downvote" (click) = "downvoteAnswer(answer)" ></button>
         <p>Author: {{poster?.email}}</p>
         <input *ngIf = "showButton()" type = "button" value = "edit">
         <input *ngIf = "showButton()" type = "button" value = "delete">

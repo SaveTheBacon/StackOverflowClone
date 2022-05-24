@@ -5,6 +5,8 @@ import {Component, ElementRef, ViewChild} from "@angular/core";
 import {CreateAnswerService} from "../../../../services/createAnswer.service";
 import {IAnswer} from "../../../../models/answer.model";
 import {IUser} from "../../../../models/user.model";
+import {IUpvote} from "../../../../models/upvote.model";
+import {IDownvote} from "../../../../models/downvote.model";
 
 @Component({
   selector: "app-detailed-post",
@@ -17,8 +19,63 @@ export class DetailedPostComponent{
   @ViewChild("answerContent") answerContent! : ElementRef
   post?: IPost
   poster?: IUser
+  voted: boolean = false
 
   constructor(private postService: SeePostService,private router: Router, private route: ActivatedRoute, private answerService : CreateAnswerService) {
+  }
+
+  hideVoteButton(){
+    return !this.voted && localStorage['email'] != this.post?.author.email
+  }
+
+  upvoteAnswer(answer : IAnswer){
+    console.log("test upvote")
+    if (localStorage['email'] && localStorage['banned'] == false) {
+      let author: IUser = {
+        userID: localStorage['userID'],
+        email: localStorage['email'],
+        score: localStorage['score'],
+        moderator: localStorage['moderator'],
+        banned: localStorage['banned'],
+        password: localStorage['pass']
+      }
+
+      let upvote : IUpvote = {
+        author : author,
+        answer : answer
+      }
+
+      console.log("test upvote")
+
+      this.postService.saveUpvote(upvote).subscribe( data =>
+        {console.log(data), this.voted = true}
+      )
+
+    }
+  }
+
+  downvoteAnswer(answer : IAnswer){
+
+
+    if (localStorage['email'] && localStorage['banned'] == false) {
+      let author: IUser = {
+        userID: localStorage['userID'],
+        email: localStorage['email'],
+        score: localStorage['score'],
+        moderator: localStorage['moderator'],
+        banned: localStorage['banned'],
+        password: localStorage['pass']
+      }
+
+      let downvote : IDownvote = {
+        author : author,
+        answer : answer
+      }
+
+      this.postService.saveDownvote(downvote).subscribe( data =>
+        {console.log(data), this.voted = true}
+      )
+    }
   }
 
   ngOnInit(){

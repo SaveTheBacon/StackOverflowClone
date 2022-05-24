@@ -1,11 +1,13 @@
 <div >
   <div >
-    <div [routerLink] = "['/posts', post?.postID]">
+    <div (click) = "redirect()">
       <p>Title: {{post?.title}}</p>
-      <p>Score: {{post?.score}}</p> <input type = "button" value = "upvote"><input type = "button" value = "downvote">
+      <p>Score: {{post?.score}}</p>
+      <button [hidden] = "hideVoteButton()" value = "upvote" (click) = "upvotePost()"></button>
+      <button [hidden]= "hideVoteButton()" value = "downvote" (click) = "downvotePost()" ></button>
       <p>Creation date: {{post?.creationDate}}</p>
       <p>Author: {{post?.author?.email}}</p>
-      <input *ngIf = "showButton" type = "button" value = "remove this post" >
+      <input *ngIf = "showButton" type = "button" value = "remove this post" (click) = "removePost(post)">
       <br>
     </div>
     Content:
