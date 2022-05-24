@@ -6,12 +6,12 @@ import {IDownvote} from "./downvote.model";
 
 
 export interface IPost{
-  postid? : number
+  postID? : number
   title: string
   content: string
   score: number
   creationDate: Date
-  poster: IUser
+  author: IUser
   tags: ITag[]
   upvotes: IUpvote[]
   downvotes: IDownvote[]

@@ -10,7 +10,7 @@
     <p>Email: {{user?.email}}</p>
     <p>Score: {{user?.score}}</p>
     <p>Mod: {{user?.moderator}}</p>
-    <p>Banned:  {{user?.banned}}</p>
+    <p>Banned:  {{user?.banned}}</p> <input *ngIf="showButton()" type = "button" value = "ban" (click) = "ban(user)">
   </div>
   <hr>
 </div>

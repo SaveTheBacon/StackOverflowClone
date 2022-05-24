@@ -18,4 +18,15 @@ export class SeeUsersComponent{
     {console.log(data),
       this.users = data})
   }
+
+  showButton(){
+    return localStorage['moderator']
+  }
+
+  ban(user: IUser){
+    if (localStorage['moderator']){
+        this.seeUsersService.banUser(user).subscribe(data =>
+        console.log(data), error => console.log(error))
+    }
+  }
 }

@@ -11,4 +11,8 @@ import {ITag} from "../../../../models/tag.model";
 export class IndividualPostComponent{
   @Input() post?: IPost
   tag?: ITag
+
+  showButton(){
+    return localStorage['moderator']
+  }
 }

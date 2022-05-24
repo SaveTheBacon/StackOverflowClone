@@ -89,7 +89,7 @@ public class Answer {
         this.score = answerDTO.getScore();
         this.content = answerDTO.getContent();
         this.date = answerDTO.getDate();
-        this.post = answerDTO.getPost();
+        this.post = new Post(answerDTO.getPost(), "numaipotvreausaterminodataajutor");
         this.poster = answerDTO.getUser();
 
     }

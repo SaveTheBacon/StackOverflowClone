@@ -1,10 +1,11 @@
 <div >
   <div >
-    <div [routerLink] = "['/posts', post?.postid]">
+    <div [routerLink] = "['/posts', post?.postID]">
       <p>Title: {{post?.title}}</p>
       <p>Score: {{post?.score}}</p> <input type = "button" value = "upvote"><input type = "button" value = "downvote">
       <p>Creation date: {{post?.creationDate}}</p>
-      <p>Author: {{post?.poster?.email}}</p>
+      <p>Author: {{post?.author?.email}}</p>
+      <input *ngIf = "showButton" type = "button" value = "remove this post" >
       <br>
     </div>
     Content:

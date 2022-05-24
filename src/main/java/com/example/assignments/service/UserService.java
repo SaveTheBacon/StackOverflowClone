@@ -39,8 +39,8 @@ public class UserService {
         return iUserRepository.save(user);
     }
 
-    public User updateUser(Integer id, User user){
-        User initialUser = this.getUser(id);
+    public User updateUser(User user){
+        User initialUser = user;
         return iUserRepository.save(initialUser);
     }
 

@@ -44,7 +44,7 @@ public class UserController     {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updateUser")
     @ResponseBody
-    public User updateUser(@RequestParam(name = "id") Integer id, @RequestBody User user) {
-        return userService.updateUser(id, user);
+    public User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
     }
 }

@@ -24,6 +24,10 @@ public class TagService {
         return tag.orElse(null);
     }
 
+    public Tag getTagByString(String name){
+        Optional<Tag> tag = iTagRepository.findTagByName(name);
+        return tag.orElse(null);
+    }
     public String deleteTag(Integer ID){
         try{
             iTagRepository.delete(this.getTag(ID));
@@ -35,6 +39,9 @@ public class TagService {
     }
 
     public Tag saveTag(Tag tag){
+
+
+
         return iTagRepository.save(tag);
     }
 

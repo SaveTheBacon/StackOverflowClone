@@ -34,12 +34,28 @@ export class SeePostComponent {
   }
 
   filterTag(){
-    let aux : IPost[] = []
     this.refreshPosts()
-    // @ts-ignore
-    aux = this.showedPosts?.filter(p => p.tags.includes(this.filterParam.nativeElement.value))
+    const filterParam : number = this.filterParam.nativeElement.value
 
-    this.showedPosts = aux
+    let aux: IPost[] = []
+    //@ts-ignore
+    for(let i = 0; i < this.posts?.length; i++){
+      //@ts-ignore
+      for(let j = 0; j < this.posts[i].tags.length; j++){
+        //@ts-ignore
+        if (this.posts[i].tags[j].name.startsWith(filterParam)){
+          //@ts-ignore
+          aux.push(this.posts[i])
+          break
+        }
+      }
+    }
+
+    if(aux.length > 0){
+      this.showedPosts = aux
+    }
+
+
 
   }
 

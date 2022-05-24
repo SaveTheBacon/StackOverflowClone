@@ -29,7 +29,7 @@ export class CreatePostComponent {
   }
 
   submitPost(){
-    if(localStorage['email']) {
+    if(localStorage['email'] && localStorage['banned'] == false) {
       let author: IUser = {
         userID: localStorage['userID'],
         email: localStorage['email'],
@@ -45,7 +45,7 @@ export class CreatePostComponent {
         score: 0,
         answers: [],
         content: this.content.nativeElement.value,
-        poster: author,
+        author: author,
         upvotes: [],
         downvotes: []
       }

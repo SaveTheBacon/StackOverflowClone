@@ -16,6 +16,7 @@ export class DetailedPostComponent{
 
   @ViewChild("answerContent") answerContent! : ElementRef
   post?: IPost
+  poster?: IUser
 
   constructor(private postService: SeePostService,private router: Router, private route: ActivatedRoute, private answerService : CreateAnswerService) {
   }
@@ -23,13 +24,16 @@ export class DetailedPostComponent{
   ngOnInit(){
     let id : number = Number(this.route.snapshot.params['id'])
 
+
     this.postService.getPostById(id).subscribe( data =>
     {this.post = data,
-      console.log(this.post)})
+      //@ts-ignore
+      this.poster = this.post?.answers[0].poster
+      console.log("Daca cineva incearca sa inteleaga ce se intampla aici, imi pare rau.")})
   }
 
   createAnswer() {
-    if (localStorage['email']) {
+    if (localStorage['email'] && localStorage['banned'] == false) {
       let author: IUser = {
         userID: localStorage['userID'],
         email: localStorage['email'],
@@ -52,6 +56,10 @@ export class DetailedPostComponent{
         this.router.navigate(["seePost"])
       })
     }
+  }
+
+  showButton(){
+    return (localStorage['email'] == this.poster?.email || localStorage['moderator'] == true)
   }
 
 

@@ -14,7 +14,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer postid;
+    private Integer postID;
     @Column(name = "content")
     private String content;
     @Column(name = "score")
@@ -23,7 +23,7 @@ public class Post {
     private Date creationDate;
     @ManyToOne
     @JoinColumn(name = "User_ID")
-    private User poster;
+    private User author;
     @Column(name = "title")
     private String title;
 
@@ -34,11 +34,20 @@ public class Post {
 
     public Post(PostDTO postDTO){
         this.content = postDTO.getContent();
-        this.poster = postDTO.getAuthor();
+        this.author = postDTO.getAuthor();
         this.title = postDTO.getTitle();
         this.creationDate = postDTO.getCreationDate();
         this.score = postDTO.getScore();
+    }
 
+    public Post(PostDTO postDTO, String numaipot){
+
+        this.postID = postDTO.getPostID();
+        this.content = postDTO.getContent();
+        this.author = postDTO.getAuthor();
+        this.title = postDTO.getTitle();
+        this.creationDate = postDTO.getCreationDate();
+        this.score = postDTO.getScore();
     }
 
     public String getTitle() {
@@ -70,11 +79,11 @@ public class Post {
     }
 
     public Integer getPostid() {
-        return postid;
+        return postID;
     }
 
-    public void setPostid(Integer postid) {
-        this.postid = postid;
+    public void setPostid(Integer postID) {
+        this.postID = postID;
     }
 
     public Date getCreationDate() {
@@ -86,10 +95,10 @@ public class Post {
     }
 
     public User getPoster() {
-        return poster;
+        return author;
     }
 
-    public void setPoster(User poster) {
-        this.poster = poster;
+    public void setPoster(User author) {
+        this.author = author;
     }
 }

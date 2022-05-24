@@ -15,15 +15,10 @@ public class PostDTO {
     private String content;
     private Integer score;
     private Date creationDate;
+    private User author;
+    private List<Tag> tags;
     private List<Upvote> upvotes;
     private List<Downvote> downvotes;
-
-
-    private User author;
-
-
-    private List<Tag> tags;
-
     private List<Answer> answers;
 
 

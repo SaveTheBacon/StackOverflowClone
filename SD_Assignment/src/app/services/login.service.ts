@@ -30,14 +30,20 @@ export class LoginService{
     console.log(users)
 
     if (auxUser){
-      console.log("Success!")
-      localStorage["userID"] = auxUser.userID
-      localStorage["email"] = auxUser.email
-      localStorage["pass"] = auxUser.password
-      localStorage["moderator"] = auxUser.moderator
-      localStorage["banned"] = auxUser.banned
-      localStorage["score"] = auxUser.score
-      this.router.navigate(["home"])
+      if(auxUser.banned == false) {
+        console.log("Success!")
+        localStorage["userID"] = auxUser.userID
+        localStorage["email"] = auxUser.email
+        localStorage["pass"] = auxUser.password
+        localStorage["moderator"] = auxUser.moderator
+        localStorage["banned"] = auxUser.banned
+        localStorage["score"] = auxUser.score
+        this.router.navigate(["home"])
+      }
+      else{
+        console.log("You are banned!")
+      }
+
 
     }
     else{

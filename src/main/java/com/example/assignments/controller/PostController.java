@@ -129,13 +129,20 @@ public class PostController {
         Post auxPost = new Post(postDTO);
         List<Tag> currentTags = postDTO.getTags();
         List<Tag> allTags = tagController.getTags();
+
+
         List<String> tagNames = allTags.stream().map(Tag::getName).collect(Collectors.toList());
+
+        List<String> currentTagNames = currentTags.stream().map(Tag::getName).collect(Collectors.toList());
         for(Tag tag: currentTags){
+
             if (!tagNames.contains(tag.getName())){
                 Tag auxTag = new Tag(tag.getName());
                 tagController.saveTag(auxTag);
             }
         }
+
+
         return postService.savePost(auxPost);
     }
 

@@ -4,7 +4,7 @@
       <p>Title: {{post?.title}}</p>
       <p>Score: {{post?.score}}</p> <input type = "button" value = "upvote"><input type = "button" value = "downvote">
       <p>Creation date: {{post?.creationDate}}</p>
-      <p>Author: {{post?.poster?.email}}</p>
+      <p>Author: {{post?.author?.email}}</p>
       <br>
     </div>
     Content:
@@ -24,11 +24,16 @@
       <input type = "button" value = "Submit an answer" (click) = "createAnswer()">
       <br>
       Answers:
+
+      <br><br>
       <div *ngFor="let answer of post?.answers">
         <p>Answer: {{answer?.content}}</p>
         <p>Score: {{answer?.score}}</p>
         <input type = "button" value = "upvote"><input type = "button" value = "downvote">
-        <p>Author: {{answer?.user?.email}}</p>
+        <p>Author: {{poster?.email}}</p>
+        <input *ngIf = "showButton()" type = "button" value = "edit">
+        <input *ngIf = "showButton()" type = "button" value = "delete">
+        <br> <br>
       </div>
     </div>
 

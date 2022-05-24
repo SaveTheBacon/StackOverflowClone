@@ -20,8 +20,7 @@ public class TagLinker {
     public TagLinker() {
     }
 
-    public TagLinker(Integer taglinkerID, Post post, Tag tag) {
-        this.taglinkerID = taglinkerID;
+    public TagLinker(Post post, Tag tag) {
         this.post = post;
         this.tag = tag;
     }

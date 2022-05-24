@@ -9,9 +9,8 @@ export interface IAnswer{
   score: number
   content: string
   user: IUser
-  date: Date
   post: IPost
-
+  date: Date
   upvotes: IUpvote
   downvote: IDownvote
 

@@ -13,18 +13,18 @@ public class AnswerDTO {
     private Integer answerID;
     private Integer score;
     private String content;
-    private User poster;
-    private Post post;
+    private User user;
+    private PostDTO postDTO;
     private Date date;
     private List<Upvote> upvotes;
     private List<Downvote> downvotes;
 
-    public AnswerDTO(Integer score, Date date, String content, User user, Post post, List<Upvote> upvotes, List<Downvote> downvotes) {
+    public AnswerDTO(Integer score, Date date, String content, User user, PostDTO postDTO, List<Upvote> upvotes, List<Downvote> downvotes) {
         this.score = score;
         this.date = date;
         this.content = content;
-        this.poster = user;
-        this.post = post;
+        this.user = user;
+        this.postDTO = postDTO;
         this.upvotes = upvotes;
         this.downvotes = downvotes;
     }
@@ -65,19 +65,19 @@ public class AnswerDTO {
     }
 
     public User getUser() {
-        return poster;
+        return user;
     }
 
     public void setUser(User user) {
-        this.poster = user;
+        this.user = user;
     }
 
-    public Post getPost() {
-        return post;
+    public PostDTO getPost() {
+        return postDTO;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setPost(PostDTO post) {
+        this.postDTO = post;
     }
 
     public List<Upvote> getUpvotes() {
