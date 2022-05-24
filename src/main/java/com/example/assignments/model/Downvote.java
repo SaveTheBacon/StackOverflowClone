@@ -12,15 +12,15 @@ public class Downvote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer DownvoteID;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "User_ID")
     private User voter;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "Post_ID")
     private Post post;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "Answer_ID")
     private Answer answer;
 

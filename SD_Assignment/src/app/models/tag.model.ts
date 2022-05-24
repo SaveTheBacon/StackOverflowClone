@@ -1,7 +1,7 @@
 
 
 export interface ITag{
-  tagid: number,
+  tagid?: number,
   name: string
 
 }

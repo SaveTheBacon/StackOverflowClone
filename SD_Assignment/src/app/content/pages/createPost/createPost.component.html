@@ -6,10 +6,12 @@
 </head>
 <body>
 
-  <h3>Title: </h3> <input type = "text">
-  <h3>Content: </h3><input type = "text">
+  <h3 >Title: </h3> <input type = "text"#title>
+  <h3 >Content: </h3><input type = "text"#content>
   <h3>Current tags: </h3>
-  <h3>New Tag: </h3><input type = "text"><input type = "button">
+  <div *ngFor="let tag1 of newTags">{{tag1.name}}</div>
+  <h3 >New Tag: </h3><input [(ngModel)]="tag" type = "text"><input type = "button" value = "add tag" (click) = "addTag()">
+  <input type = "button" value = "Submit your post" (click) = "submitPost()">
 
 </body>
 </html>

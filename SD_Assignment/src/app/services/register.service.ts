@@ -6,7 +6,7 @@ import {IUser} from "../models/user.model";
 @Injectable()
 export class RegisterService{
 
-  createUserUrl = 'http://localhost:8081/Users/saveUser'
+  createUserUrl = 'http://localhost:8081/users/saveUser'
 
   constructor(private http: HttpClient) {
   }

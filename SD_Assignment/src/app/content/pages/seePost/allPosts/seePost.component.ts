@@ -21,9 +21,10 @@ export class SeePostComponent {
   ngOnInit(){
     this.seePostService.getPosts().subscribe(data =>
     {console.log(data),
-      this.posts = data,
+      this.posts = data
     this.refreshPosts()})
   }
+
 
   filterQuestions(){
     this.refreshPosts()
@@ -33,11 +34,18 @@ export class SeePostComponent {
   }
 
   filterTag(){
-    console.log("test")
+    let aux : IPost[] = []
+    this.refreshPosts()
+    // @ts-ignore
+    aux = this.showedPosts?.filter(p => p.tags.includes(this.filterParam.nativeElement.value))
+
+    this.showedPosts = aux
+
   }
 
   refreshPosts(){
     this.showedPosts = this.posts
+
   }
 }
 

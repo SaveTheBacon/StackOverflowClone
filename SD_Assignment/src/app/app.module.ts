@@ -22,6 +22,9 @@ import {RegisterService} from "./services/register.service";
 import {SeeUsersService} from "./services/seeUsers.service";
 import {SeeUsersComponent} from "./content/pages/seeUsers/seeUsers.component";
 import {LoginService} from "./services/login.service";
+import {FormsModule} from "@angular/forms";
+import {LogoutComponent} from "./content/pages/logout/logout.component";
+import {CreatePostService} from "./services/createPost.service";
 
 @NgModule({
   declarations: [
@@ -34,25 +37,28 @@ import {LoginService} from "./services/login.service";
     SeeTagComponent,
     NavbarComponent,
     IndividualPostComponent,
-    SeeUsersComponent
+    SeeUsersComponent,
+    LogoutComponent
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ButtonModule,
-    TabMenuModule,
-    InputTextModule,
-    HttpClientModule,
-    CommonModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ButtonModule,
+        TabMenuModule,
+        InputTextModule,
+        HttpClientModule,
+        CommonModule,
+        FormsModule
 
-  ],
+    ],
   providers: [
     SeePostService,
     SeeTagService,
     RegisterService,
     SeeUsersService,
-    LoginService
+    LoginService,
+    CreatePostService
 
   ],
   bootstrap: [AppComponent]

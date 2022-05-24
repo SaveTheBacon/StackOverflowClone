@@ -26,6 +26,14 @@ public class User {
 
     }
 
+    public Integer getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(Integer userID) {
+        UserID = userID;
+    }
+
     public User(String email, String password) {
         this.email = email;
         this.banned = false;

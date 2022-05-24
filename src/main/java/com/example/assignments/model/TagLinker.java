@@ -8,23 +8,23 @@ public class TagLinker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer linkID;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "post_ID")
+    Integer taglinkerID;
+    @ManyToOne
+    @JoinColumn(name = "post_id", referencedColumnName = "postid")
     private Post post;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tag_ID")
+    @ManyToOne
+    @JoinColumn(name = "tag_id", referencedColumnName = "tagid")
     private Tag tag;
 
     public TagLinker() {
     }
 
-    public Integer getLinkID() {
-        return linkID;
+    public Integer getTaglinkerID() {
+        return taglinkerID;
     }
 
-    public void setLinkID(Integer linkID) {
-        this.linkID = linkID;
+    public void setTaglinkerID(Integer taglinkerID) {
+        this.taglinkerID = taglinkerID;
     }
 
     public Post getPost() {
@@ -43,8 +43,8 @@ public class TagLinker {
         this.tag = tag;
     }
 
-    public TagLinker(Integer linkID, Post post, Tag tag) {
-        this.linkID = linkID;
+    public TagLinker(Integer taglinkerID, Post post, Tag tag) {
+        this.taglinkerID = taglinkerID;
         this.post = post;
         this.tag = tag;
     }

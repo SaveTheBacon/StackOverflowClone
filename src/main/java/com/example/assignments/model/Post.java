@@ -1,6 +1,7 @@
 package com.example.assignments.model;
 
 
+import com.example.assignments.dto.PostDTO;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 
 import javax.persistence.*;
@@ -20,7 +21,7 @@ public class Post {
     private Integer score;
     @Column(name = "creation_date")
     private Date creationDate;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "User_ID")
     private User poster;
     @Column(name = "title")
@@ -31,12 +32,14 @@ public class Post {
 
     }
 
-//    public Post(String content, User poster, String title) {
-//        this.content = content;
-//        this.poster = poster;
-//        this.title = title;
-//        this.creationDate = new java.sql.Date(System.currentTimeMillis());
-//    }
+    public Post(PostDTO postDTO){
+        this.content = postDTO.getContent();
+        this.poster = postDTO.getAuthor();
+        this.title = postDTO.getTitle();
+        this.creationDate = postDTO.getCreationDate();
+        this.score = postDTO.getScore();
+
+    }
 
     public String getTitle() {
         return title;

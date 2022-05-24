@@ -19,7 +19,7 @@ export class RegisterComponent{
 
 
   registerUser(){
-    let user : IUser = {email : this.email.nativeElement.value, password : this.email.nativeElement.value, score: 0, banned: false, moderator: false}
+    let user : IUser = {email : this.email.nativeElement.value, password : this.password.nativeElement.value, score: 0, banned: false, moderator: false}
     this.registerService.createUser(user).subscribe(result => {
       console.log(result)
     })

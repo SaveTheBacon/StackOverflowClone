@@ -1,31 +1,72 @@
 package com.example.assignments.dto;
 
 
+import com.example.assignments.model.*;
+
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class PostDTO {
 
     private Integer postID;
+    private String title;
     private String content;
     private Integer score;
-    private GregorianCalendar creationDate;
-    private Integer userID;
-    private Integer upvotes;
-    private Integer downvotes;
-    private String title;
+    private Date creationDate;
+    private List<Upvote> upvotes;
+    private List<Downvote> downvotes;
 
-    public PostDTO(Integer postID, String content, Integer score, GregorianCalendar creationDate, Integer userID, Integer upvotes, Integer downvotes, String title) {
+
+    private User author;
+
+
+    private List<Tag> tags;
+
+    private List<Answer> answers;
+
+
+
+    public PostDTO(Integer postID, String content, Integer score, Date creationDate, List<Upvote> upvotes, List<Downvote> downvotes, String title, User author, List<Tag> tags, List<Answer> answers) {
         this.postID = postID;
         this.content = content;
         this.score = score;
         this.creationDate = creationDate;
-        this.userID = userID;
         this.upvotes = upvotes;
         this.downvotes = downvotes;
         this.title = title;
+        this.author = author;
+        this.tags = tags;
+        this.answers = answers;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 
     public PostDTO() {
+    }
+
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
     }
 
     public Integer getPostID() {
@@ -52,32 +93,12 @@ public class PostDTO {
         this.score = score;
     }
 
-    public GregorianCalendar getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(GregorianCalendar creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public Integer getUserID() {
-        return userID;
-    }
-
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }
-
-    public Integer getUpvotes() {
-        return upvotes;
-    }
-
-    public void setUpvotes(Integer upvotes) {
-        this.upvotes = upvotes;
-    }
-
-    public Integer getDownvotes() {
-        return downvotes;
     }
 
     public String getTitle() {
@@ -88,7 +109,19 @@ public class PostDTO {
         this.title = title;
     }
 
-    public void setDownvotes(Integer downvotes) {
+    public List<Upvote> getUpvotes() {
+        return upvotes;
+    }
+
+    public void setUpvotes(List<Upvote> upvotes) {
+        this.upvotes = upvotes;
+    }
+
+    public List<Downvote> getDownvotes() {
+        return downvotes;
+    }
+
+    public void setDownvotes(List<Downvote> downvotes) {
         this.downvotes = downvotes;
     }
 }

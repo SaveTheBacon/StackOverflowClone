@@ -7,10 +7,12 @@ import {CreatePostComponent} from "./content/pages/createPost/createPost.compone
 import {SeePostComponent} from "./content/pages/seePost/allPosts/seePost.component";
 import {SeeTagComponent} from "./content/pages/seeTag/seeTag.component";
 import {SeeUsersComponent} from "./content/pages/seeUsers/seeUsers.component";
+import {LogoutComponent} from "./content/pages/logout/logout.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'createPost', component: CreatePostComponent},
   {path: 'seePost', component: SeePostComponent},

@@ -2,22 +2,23 @@
   <div>
     <div>
       <p>Title: {{post?.title}}</p>
-      <p>Score: {{post?.score}}</p>
+      <p>Score: {{post?.score}}</p> <input type = "button" value = "upvote"><input type = "button" value = "downvote">
+      <p>Creation date: {{post?.creationDate}}</p>
+      <p>Author: {{post?.author?.email}}</p>
       <br>
     </div>
     Content:
     <p>{{post?.content}}</p>
-    <hr>
-    <!--<div class="d-flex justify-content-start">
-      <div *ngFor="let tag of question?.tags">
+    <!--
+    <div >
+      <div *ngFor="let tag of post?.tags">
         <app-tag-item [tag]=tag></app-tag-item>
       </div>
     </div>
--->
-    <div >
-      <p>{{post?.creation_date}}</p>
-      <!--<p>{{post?.author?.name}}</p> -->
-    </div>
+    -->
+    <hr>
+
+
 
   </div>
 </div>
