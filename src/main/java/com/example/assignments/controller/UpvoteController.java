@@ -1,10 +1,14 @@
 package com.example.assignments.controller;
 
 import com.example.assignments.dto.UpvoteDTO;
+import com.example.assignments.model.Answer;
 import com.example.assignments.model.Post;
 import com.example.assignments.model.Upvote;
+import com.example.assignments.model.User;
+import com.example.assignments.service.AnswerService;
 import com.example.assignments.service.PostService;
 import com.example.assignments.service.UpvoteService;
+import com.example.assignments.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +26,12 @@ public class UpvoteController {
 
     @Autowired
     PostService postService;
+
+    @Autowired
+    AnswerService answerService;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getAll")
     @ResponseBody
@@ -45,16 +55,34 @@ public class UpvoteController {
     @ResponseBody
     public Upvote saveUpvote(@RequestBody UpvoteDTO upvoteDTO) {
         Upvote upvote;
+        User targetUser;
+
         if(upvoteDTO.getPost() != null) {
+            targetUser = userService.getUser(upvoteDTO.getPost().getPoster().getUserID()) ;
             upvote = new Upvote(upvoteDTO.getAuthor(), upvoteDTO.getPost());
+
+            Post auxPost =  postService.getPostByTitle(upvote.getPost().getTitle());
             if (upvote.getPost().getPostid() == null){
-               Post auxPost =  postService.getPostByTitle(upvote.getPost().getTitle());
+
                upvote.getPost().setPostid(auxPost.getPostid());
             }
+
+            targetUser.setScore(targetUser.getScore() + 5);
+
+            auxPost.setScore(auxPost.getScore()+1);
+            postService.updatePost(auxPost);
         }
         else{
+            targetUser = userService.getUser(upvoteDTO.getAnswer().getPoster().getUserID()) ;
             upvote = new Upvote(upvoteDTO.getAuthor(), upvoteDTO.getAnswer());
+            Answer auxAnswer = answerService.getAnswer(upvoteDTO.getAnswer().getAnswerID());
+            auxAnswer.setScore(auxAnswer.getScore()+ 1);
+
+            targetUser.setScore(targetUser.getScore() + 10);
+
+            answerService.updateAnswer(auxAnswer);
         }
+        userService.saveUser(targetUser);
         return upvoteService.saveUpvote(upvote);
     }
 

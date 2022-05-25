@@ -11,7 +11,7 @@ export interface IAnswer{
   user: IUser
   post: IPost
   date: Date
-  upvotes: IUpvote
-  downvote: IDownvote
+  upvotes: IUpvote[]
+  downvote: IDownvote[]
 
 }

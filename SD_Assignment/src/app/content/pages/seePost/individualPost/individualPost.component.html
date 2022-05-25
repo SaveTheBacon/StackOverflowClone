@@ -7,7 +7,7 @@
       <button [hidden]= "hideVoteButton()"(click) = "downvotePost()" >downvote </button>
       <p>Creation date: {{post?.creationDate}}</p>
       <p>Author: {{post?.author?.email}}</p>
-      <input *ngIf = "showButton" type = "button" value = "remove this post" (click) = "removePost(post)">
+      <input *ngIf = "showButton()" type = "button" value = "remove this post" (click) = "removePost(post)">
       <br>
     </div>
     Content:

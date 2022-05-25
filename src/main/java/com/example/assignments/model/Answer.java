@@ -93,4 +93,14 @@ public class Answer {
         this.poster = answerDTO.getUser();
 
     }
+
+    public Answer(AnswerDTO answerDTO, String scuze){
+        this.answerID = answerDTO.getAnswerID();
+        this.score = answerDTO.getScore();
+        this.content = answerDTO.getContent();
+        this.date = answerDTO.getDate();
+        this.post = new Post(answerDTO.getPost(), "numaipotvreausaterminodataajutor");
+        this.poster = answerDTO.getUser();
+
+    }
 }

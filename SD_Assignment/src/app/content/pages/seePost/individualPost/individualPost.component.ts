@@ -25,15 +25,16 @@ export class IndividualPostComponent{
   }
 
   showButton(){
-    return localStorage['moderator']
+    return localStorage['moderator'] == "true"
   }
 
   hideVoteButton(){
-    return localStorage['email'] != this.post?.author.email
+    return localStorage['email'] == this.post?.author.email
   }
 
   removePost(post?: IPost){
-
+    if (post != undefined)
+      this.postService.removePost(post)
   }
 
   upvotePost(){
@@ -55,7 +56,7 @@ export class IndividualPostComponent{
       }
 
       console.log("test upvote")
-
+      console.log(upvote)
       this.postService.saveUpvote(upvote).subscribe( data =>
       {console.log(data)}
       )

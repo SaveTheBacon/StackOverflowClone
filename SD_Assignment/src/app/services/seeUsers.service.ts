@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {IUser} from "../models/user.model";
 import {compareSegments} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/segment_marker";
 
@@ -7,7 +7,7 @@ import {compareSegments} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/se
 export class SeeUsersService{
 
   getAllUrl = 'http://localhost:8081/users/getAllUsers'
-  banUserUrl = 'http://localhost:8081/users/updateUser'
+  banUserUrl = 'http://localhost:8081/users/banUser'
 
   constructor(private http: HttpClient) {
   }
@@ -16,19 +16,9 @@ export class SeeUsersService{
     return this.http.get<IUser[]>(this.getAllUrl)
   }
 
-  banUser(user : IUser){
-    let newUser :IUser = {
-      userID : user.userID,
-      email: user.email,
-      password: user.password,
-      score: user.score,
-      banned: true,
-      moderator: user.moderator
-    }
-
-    console.log(newUser)
-
-    return this.http.put(this.banUserUrl, newUser)
+  banUser(id : number){
+    let params = new HttpParams().set('id', id)
+    return this.http.post(this.banUserUrl, "", {params: params})
   }
 
 }

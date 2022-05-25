@@ -24,37 +24,12 @@ export class DetailedPostComponent{
   }
 
   hideVoteButton(){
-    return localStorage['email'] != this.post?.author.email
+    return localStorage['email'] == this.post?.author.email
   }
 
   upvoteAnswer(answer : IAnswer){
-    let canVote : boolean = true
-    let allUpvotes: IUpvote[]
-    this.postService.getUpvotes().subscribe( data => {
-      allUpvotes = data
-    })
-    let allDownvotes: IDownvote[]
-    this.postService.getDownvotes().subscribe( data => allDownvotes = data)
 
-
-    // @ts-ignore
-    for(let i = 0; i < allUpvotes.length; i++){
-      // @ts-ignore
-      if(allUpvotes[i].answer.answerID == answer.answerID && allUpvotes[i].author.email == localStorage['email']){
-        canVote = false
-        break
-      }
-    }
-    // @ts-ignore
-    for(let i = 0; i < allDownvotes.length && canVote; i++){
-      // @ts-ignore
-      if(allDownvotes[i].answer.answerID == answer.answerID && allDownvotes[i].author.email == localStorage['email']){
-        canVote = false
-        break
-      }
-    }
-
-    if (localStorage['email'].length > 0 && localStorage['banned'] == "false" && canVote) {
+    if (localStorage['email'].length > 0 && localStorage['banned'] == "false") {
       console.log("test upvote2")
       let author: IUser = {
         userID: localStorage['userID'],
@@ -114,7 +89,8 @@ export class DetailedPostComponent{
   }
 
   createAnswer() {
-    if (localStorage['email'] && localStorage['banned'] == false) {
+    console.log("Trying to create an answer")
+    if (localStorage['email'] && localStorage['banned'] == "false") {
       let author: IUser = {
         userID: localStorage['userID'],
         email: localStorage['email'],

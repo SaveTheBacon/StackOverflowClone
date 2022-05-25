@@ -25,8 +25,10 @@ export class SeeUsersComponent{
 
   ban(user: IUser){
     if (localStorage['moderator']){
-        this.seeUsersService.banUser(user).subscribe(data =>
-        console.log(data), error => console.log(error))
+       if (user.userID != undefined) {
+         this.seeUsersService.banUser(user.userID).subscribe(data =>
+           console.log(data), error => console.log(error))
+       }
     }
   }
 }

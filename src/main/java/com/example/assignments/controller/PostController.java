@@ -89,7 +89,7 @@ public class PostController {
 
         List<Answer> auxAnswers = new ArrayList<>();
         for(Answer answer: allAnswers){
-            if (answer.getPost().getPostid().equals(post.getPostid())){
+            if (answer.getPost() != null && answer.getPost().getPostid().equals(post.getPostid())){
                 auxAnswers.add(answer);
             }
         }

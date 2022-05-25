@@ -42,6 +42,12 @@ public class UserController     {
         return userService.saveUser(user);
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/banUser")
+    @ResponseBody
+    public User banUser(@RequestParam(name = "id") Integer id){
+        return userService.banUser(id);
+    }
+
     @RequestMapping(method = RequestMethod.PUT, value = "/updateUser")
     @ResponseBody
     public User updateUser(@RequestBody User user) {

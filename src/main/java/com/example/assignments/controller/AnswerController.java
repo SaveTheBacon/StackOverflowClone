@@ -48,7 +48,9 @@ public class AnswerController {
 
     @RequestMapping(method = RequestMethod.PUT  , value = "/updateAnswer")
     @ResponseBody
-    public Answer updateAnswer(@RequestBody Answer answer) {
+    public Answer updateAnswer(@RequestBody AnswerDTO answerDTO) {
+        System.out.printf("va rog stop");
+        Answer answer = new Answer(answerDTO, "SCUZE");
         return answerService.updateAnswer(answer);
     }
 }
