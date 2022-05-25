@@ -36,6 +36,11 @@ public class PostService {
         return post.orElse(null);
     }
 
+    public Post getPostByTitle(String title){
+        Optional<Post> post = iPostRepository.findPostByTitle(title);
+        return post.orElse(null);
+    }
+
     public String deletePost(Integer ID){
         try{
             iPostRepository.delete(this.getPost(ID));

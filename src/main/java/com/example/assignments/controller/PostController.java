@@ -58,13 +58,13 @@ public class PostController {
         }
         List<Upvote> auxUpvotes = new ArrayList<>();
         for(Upvote upvote: allUpvotes){
-            if(upvote.getPost().getPostid().equals(post.getPostid())){
+            if(upvote.getPost() != null && upvote.getPost().getPostid().equals(post.getPostid())){
                 auxUpvotes.add(upvote);
             }
         }
         List<Downvote> auxDownvotes = new ArrayList<>();
         for(Downvote downvote: allDownvotes){
-            if(downvote.getPost().getPostid().equals(post.getPostid())){
+            if(downvote.getPost() != null && downvote.getPost().getPostid().equals(post.getPostid())){
                 auxDownvotes.add(downvote);
             }
         }
@@ -102,13 +102,13 @@ public class PostController {
         }
         List<Upvote> auxUpvotes = new ArrayList<>();
         for(Upvote upvote: allUpvotes){
-            if(upvote.getPost().getPostid().equals(post.getPostid())){
+            if(upvote.getPost() != null && upvote.getPost().getPostid().equals(post.getPostid())){
                 auxUpvotes.add(upvote);
             }
         }
         List<Downvote> auxDownvotes = new ArrayList<>();
         for(Downvote downvote: allDownvotes){
-            if(downvote.getPost().getPostid().equals(post.getPostid())){
+            if(downvote.getPost() != null && downvote.getPost().getPostid().equals(post.getPostid())){
                 auxDownvotes.add(downvote);
             }
         }

@@ -1,6 +1,9 @@
 package com.example.assignments.controller;
 
+import com.example.assignments.dto.UpvoteDTO;
+import com.example.assignments.model.Post;
 import com.example.assignments.model.Upvote;
+import com.example.assignments.service.PostService;
 import com.example.assignments.service.UpvoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,9 @@ public class UpvoteController {
 
     @Autowired
     UpvoteService upvoteService;
+
+    @Autowired
+    PostService postService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getAll")
     @ResponseBody
@@ -37,7 +43,18 @@ public class UpvoteController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/saveUpvote")
     @ResponseBody
-    public Upvote saveUpvote(@RequestBody Upvote upvote) {
+    public Upvote saveUpvote(@RequestBody UpvoteDTO upvoteDTO) {
+        Upvote upvote;
+        if(upvoteDTO.getPost() != null) {
+            upvote = new Upvote(upvoteDTO.getAuthor(), upvoteDTO.getPost());
+            if (upvote.getPost().getPostid() == null){
+               Post auxPost =  postService.getPostByTitle(upvote.getPost().getTitle());
+               upvote.getPost().setPostid(auxPost.getPostid());
+            }
+        }
+        else{
+            upvote = new Upvote(upvoteDTO.getAuthor(), upvoteDTO.getAnswer());
+        }
         return upvoteService.saveUpvote(upvote);
     }
 

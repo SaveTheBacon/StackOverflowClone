@@ -6,12 +6,11 @@ import javax.persistence.*;
 @Entity
 public class Downvote {
 
-    public Downvote() {
-    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer DownvoteID;
+    Integer downvoteID;
     @ManyToOne
     @JoinColumn(name = "User_ID")
     private User voter;
@@ -24,24 +23,39 @@ public class Downvote {
     @JoinColumn(name = "Answer_ID")
     private Answer answer;
 
+    public Downvote() {
+    }
+
     public Downvote(Integer downvoteID, User voter, Post post) {
-        DownvoteID = downvoteID;
+        downvoteID = downvoteID;
         this.voter = voter;
         this.post = post;
     }
 
     public Downvote(Integer downvoteID, User voter, Answer answer) {
-        DownvoteID = downvoteID;
+        downvoteID = downvoteID;
+        this.voter = voter;
+        this.answer = answer;
+    }
+
+    public Downvote(User voter, Post post) {
+        this.downvoteID = null;
+        this.voter = voter;
+        this.post = post;
+    }
+
+    public Downvote(User voter, Answer answer) {
+        this.downvoteID = null;
         this.voter = voter;
         this.answer = answer;
     }
 
     public Integer getDownvoteID() {
-        return DownvoteID;
+        return downvoteID;
     }
 
     public void setDownvoteID(Integer downvoteID) {
-        DownvoteID = downvoteID;
+        this.downvoteID = downvoteID;
     }
 
     public User getVoter() {

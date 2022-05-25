@@ -19,18 +19,43 @@ export class DetailedPostComponent{
   @ViewChild("answerContent") answerContent! : ElementRef
   post?: IPost
   poster?: IUser
-  voted: boolean = false
 
   constructor(private postService: SeePostService,private router: Router, private route: ActivatedRoute, private answerService : CreateAnswerService) {
   }
 
   hideVoteButton(){
-    return !this.voted && localStorage['email'] != this.post?.author.email
+    return localStorage['email'] != this.post?.author.email
   }
 
   upvoteAnswer(answer : IAnswer){
-    console.log("test upvote")
-    if (localStorage['email'] && localStorage['banned'] == false) {
+    let canVote : boolean = true
+    let allUpvotes: IUpvote[]
+    this.postService.getUpvotes().subscribe( data => {
+      allUpvotes = data
+    })
+    let allDownvotes: IDownvote[]
+    this.postService.getDownvotes().subscribe( data => allDownvotes = data)
+
+
+    // @ts-ignore
+    for(let i = 0; i < allUpvotes.length; i++){
+      // @ts-ignore
+      if(allUpvotes[i].answer.answerID == answer.answerID && allUpvotes[i].author.email == localStorage['email']){
+        canVote = false
+        break
+      }
+    }
+    // @ts-ignore
+    for(let i = 0; i < allDownvotes.length && canVote; i++){
+      // @ts-ignore
+      if(allDownvotes[i].answer.answerID == answer.answerID && allDownvotes[i].author.email == localStorage['email']){
+        canVote = false
+        break
+      }
+    }
+
+    if (localStorage['email'].length > 0 && localStorage['banned'] == "false" && canVote) {
+      console.log("test upvote2")
       let author: IUser = {
         userID: localStorage['userID'],
         email: localStorage['email'],
@@ -48,16 +73,15 @@ export class DetailedPostComponent{
       console.log("test upvote")
 
       this.postService.saveUpvote(upvote).subscribe( data =>
-        {console.log(data), this.voted = true}
+        {console.log(data)}
       )
 
     }
   }
 
   downvoteAnswer(answer : IAnswer){
-
-
-    if (localStorage['email'] && localStorage['banned'] == false) {
+    console.log("test downvote")
+    if (localStorage['email'].length > 0 && localStorage['banned'] == "false") {
       let author: IUser = {
         userID: localStorage['userID'],
         email: localStorage['email'],
@@ -71,9 +95,9 @@ export class DetailedPostComponent{
         author : author,
         answer : answer
       }
-
+      console.log("test downvote2")
       this.postService.saveDownvote(downvote).subscribe( data =>
-        {console.log(data), this.voted = true}
+        {console.log(data)}
       )
     }
   }

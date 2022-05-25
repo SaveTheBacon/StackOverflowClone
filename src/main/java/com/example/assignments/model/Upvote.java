@@ -8,7 +8,7 @@ public class Upvote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer UpvoteID;
+    Integer upvoteID;
     @ManyToOne
     @JoinColumn(name = "User_ID")
     private User voter;
@@ -22,13 +22,25 @@ public class Upvote {
     private Answer answer;
 
     public Upvote(Integer upvoteID, User voter, Post post) {
-        UpvoteID = upvoteID;
+        this.upvoteID = upvoteID;
         this.voter = voter;
         this.post = post;
     }
 
     public Upvote(Integer upvoteID, User voter, Answer answer) {
-        UpvoteID = upvoteID;
+        this.upvoteID = upvoteID;
+        this.voter = voter;
+        this.answer = answer;
+    }
+
+    public Upvote(User voter, Post post) {
+        this.upvoteID = null;
+        this.voter = voter;
+        this.post = post;
+    }
+
+    public Upvote(User voter, Answer answer) {
+        this.upvoteID = null;
         this.voter = voter;
         this.answer = answer;
     }
@@ -37,11 +49,11 @@ public class Upvote {
     }
 
     public Integer getUpvoteID() {
-        return UpvoteID;
+        return upvoteID;
     }
 
     public void setUpvoteID(Integer upvoteID) {
-        UpvoteID = upvoteID;
+        this.upvoteID = upvoteID;
     }
 
     public User getVoter() {

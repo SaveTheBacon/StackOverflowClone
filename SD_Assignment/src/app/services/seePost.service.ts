@@ -15,6 +15,9 @@ export class SeePostService{
   addUpvoteUrl = 'http://localhost:8081/upvotes/saveUpvote'
   addDownvoteUrl = 'http://localhost:8081/downvotes/saveDownvote'
 
+  getUpvoteUrl = 'http://localhost:8081/upvotes/getAll'
+  getDownvoteUrl = 'http://localhost:8081/downvotes/getAll'
+
   constructor(private http: HttpClient) {
   }
 
@@ -35,6 +38,14 @@ export class SeePostService{
 
   saveDownvote(downvote: IDownvote){
     return this.http.post(this.addDownvoteUrl, downvote)
+  }
+
+  getUpvotes(){
+    return this.http.get<IUpvote[]>(this.getUpvoteUrl)
+  }
+
+  getDownvotes(){
+    return this.http.get<IDownvote[]>(this.getDownvoteUrl)
   }
 
 }

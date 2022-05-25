@@ -16,7 +16,6 @@ import {Router} from "@angular/router";
 export class IndividualPostComponent{
   @Input() post?: IPost
   tag?: ITag
-  voted: boolean = false
 
   constructor(private postService: SeePostService, private router : Router) {
   }
@@ -30,7 +29,7 @@ export class IndividualPostComponent{
   }
 
   hideVoteButton(){
-    return !this.voted && localStorage['email'] != this.post?.author.email
+    return localStorage['email'] != this.post?.author.email
   }
 
   removePost(post?: IPost){
@@ -39,7 +38,8 @@ export class IndividualPostComponent{
 
   upvotePost(){
     console.log("test upvote")
-    if (localStorage['email'] && localStorage['banned'] == false) {
+    if (localStorage['email'].length > 0 && localStorage['banned'] == "false") {
+      console.log("test upvote2")
       let author: IUser = {
         userID: localStorage['userID'],
         email: localStorage['email'],
@@ -57,7 +57,7 @@ export class IndividualPostComponent{
       console.log("test upvote")
 
       this.postService.saveUpvote(upvote).subscribe( data =>
-      {console.log(data), this.voted = true}
+      {console.log(data)}
       )
 
     }
@@ -66,7 +66,7 @@ export class IndividualPostComponent{
   downvotePost(){
 
 
-    if (localStorage['email'] && localStorage['banned'] == false) {
+    if (localStorage['email'].length > 0 && localStorage['banned'] == "false") {
       let author: IUser = {
         userID: localStorage['userID'],
         email: localStorage['email'],
@@ -82,7 +82,7 @@ export class IndividualPostComponent{
       }
 
       this.postService.saveDownvote(downvote).subscribe( data =>
-        {console.log(data), this.voted = true}
+        {console.log(data)}
       )
     }
   }
